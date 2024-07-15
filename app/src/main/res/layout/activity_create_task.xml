@@ -194,11 +194,24 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
-        <Button
+        <TextView
+            android:id="@+id/tv_location_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:visibility="gone"
+            android:fontFamily="@font/euclid_regular"
+            android:textColor="@color/black" />
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSelectLocation"
+            app:strokeWidth="1dp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:strokeColor="@color/light_blue"
+            android:textAllCaps="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            app:cornerRadius="6dp"
             android:text="Select Location" />
 
         <com.google.android.material.button.MaterialButton

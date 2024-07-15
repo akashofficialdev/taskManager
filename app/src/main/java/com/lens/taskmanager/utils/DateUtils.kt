@@ -67,12 +67,12 @@ object DateUtils {
     fun formatDateIntoReadable(date: String): String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         date.formatIso8601IntoReadable()
     } else {
-        date // TODO: give solution for API level <26
+        date
     }
 
     fun formatReadableIntoIso8601(date: String): String = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
         date.formatReadableIntoIso8601()
     } else {
-        date // TODO: give solution for API level <26
+        date
     }
 }

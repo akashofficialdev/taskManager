@@ -1,13 +1,17 @@
 package com.lens.taskmanager.features.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.TextView
 import android.widget.Toast
+import androidx.core.view.isVisible
 import com.lens.taskmanager.R
 import com.lens.taskmanager.data.local.room.TaskEntity
 import com.lens.taskmanager.databinding.ActivityCreateTaskBinding
@@ -21,6 +25,8 @@ import java.util.Locale
 class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding>() {
     private var isEdit = false
     private var id = 0
+    private lateinit var lat:String
+    private lateinit var long:String
 
     override val mViewModel: TaskViewModel by viewModel()
 
@@ -69,6 +75,10 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
                 mViewBinding.spinnerPriority.adapter = adapter
             }
         }
+
+        mViewBinding.buttonSelectLocation.setOnClickListener {
+            openActivityForResult()
+        }
         mViewBinding.cvDueDate.setOnClickListener {
             showDatePickerDialog(mViewBinding.dueDate)
         }
@@ -111,13 +121,16 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
             isValid = false
         }
 
+        if (!::lat.isInitialized || !::long.isInitialized){
+            isValid = false
+            Toast.makeText(this,"Please Select Location",Toast.LENGTH_SHORT).show()
+        }
+
         if (isValid) {
             val title = mViewBinding.title.text.toString()
             val description = mViewBinding.description.text.toString()
             val dueDate = mViewBinding.dueDate.text.toString()
             val priority = mViewBinding.spinnerPriority.selectedItem.toString()
-            val latitude = 25.343534 // Replace with actual latitude
-            val longitude = 72.232343
             if (isEdit) {
                 val task = TaskEntity(
                     id = id,
@@ -126,8 +139,8 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
                     dueDate = dueDate,
                     priority = priority,
                     isCompleted = false,
-                    latitude = latitude,
-                    longitude = longitude
+                    latitude = lat.toDouble(),
+                    longitude = long.toDouble()
                 )
                 mViewModel.updateTask(task)
             } else {
@@ -137,9 +150,11 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
                     dueDate = dueDate,
                     priority = priority,
                     isCompleted = false,
-                    latitude = latitude,
-                    longitude = longitude
+                    latitude = lat.toDouble(),
+                    longitude = long.toDouble()
                 )
+
+                Log.e("TAG", "validateAndSave: $lat,$long", )
                 mViewModel.insertTask(task)
             }
 
@@ -178,6 +193,26 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
         datePickerDialog.datePicker.maxDate = endOfYear.timeInMillis
 
         datePickerDialog.show()
+    }
+
+    private fun openActivityForResult() {
+        val intent = Intent(this, LocationActivity::class.java)
+        startActivityForResult(intent, 123)
+    }
+
+    @SuppressLint("MissingSuperCall")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == RESULT_OK && requestCode == 123) {
+            var location = data?.getStringExtra("location")
+            var latlang = data?.getStringExtra("latlang")
+            lat = latlang?.substringBefore(":").toString()
+            long = latlang?.substringAfter(":").toString()
+            mViewBinding.tvLocationText.isVisible = true
+            mViewBinding.tvLocationText.text = location
+            Log.e("TAG", "onActivityResult: Lat and Long: $lat, $long", )
+            Log.e("TAG", "onActivityResult: LatLang: $latlang", )
+        }
+
     }
 
 }

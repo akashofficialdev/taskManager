@@ -160,5 +160,6 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="edit_task_title">Edit Task</string>
+    <string name="google_maps_key">AIzaSyDdZmOqadnPwN0bTn7Z_fJqMZF77dGmnm0</string>
 
 </resources>

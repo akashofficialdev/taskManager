@@ -73,6 +73,8 @@ dependencies {
     implementation(libs.face.detection)
     implementation(libs.koin.android)
     implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.places)
+    implementation(libs.maps)
     kapt(libs.androidx.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
