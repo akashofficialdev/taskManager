@@ -1,3 +1,164 @@
 <resources>
     <string name="app_name">TaskManager</string>
+    <string name="item">Item</string>
+
+    <string name="api_logger">Api Logger</string>
+    <string name="log_viewer">Log Viewer</string>
+    <string name="setting">Setting</string>
+
+    <string name="log_export_title">Export log file</string>
+    <string name="create_downloads_file_error">Cannot create file in downloads directory</string>
+    <string name="create_output_dir_error">Cannot create output directory</string>
+    <string name="sample">sample_data</string>
+    <string name="text_tags">TAGS</string>
+
+    <!-- Log Viewer Activity-->
+    <string name="log_viewer_extended_fab_text">Options</string>
+    <string name="log_viewer_toolbar_title">Device Logs</string>
+
+    <!-- Common onboarding strings -->
+    <string name="edittext_hint_email">Email</string>
+    <string name="onboarding_content_desc_header_image">People\'s App Logo</string>
+    <!-- Login Screen -->
+    <string name="login_title">Log In</string>
+    <string name="login_subtitle">Enter your login details here</string>
+    <string name="login_edittext_pwd_helper">Password should be alphanumeric. Avoid special characters.</string>
+    <string name="login_edittext_hint_pwd">Password</string>
+    <string name="login_button_text_forgot_pwd">Forgot Password?</string>
+    <string name="login_button_text_login">Login</string>
+    <string name="login_button_text_guest_login">Login as a Guest</string>
+    <!-- Forgot Password Screen -->
+    <string name="forgot_pwd_title">Forgot Password</string>
+    <string name="forgot_pwd_subtitle">We will send the verification code to your email address</string>
+    <string name="forgot_pwd_cta">Confirm</string>
+    <string name="spinner_login_state">State</string>
+    <string name="school_code">School Code:</string>
+    <string name="serial_number">Serial Number:</string>
+    <string name="scan_barcode">Scan Barcode</string>
+    <string name="lab_number">Lab Number:</string>
+    <string name="enter_lab_number_if_any">Enter Lab Number (if any)</string>
+    <string name="project_details">Project Details:</string>
+    <string name="project_name">Project Name</string>
+    <string name="school_name">School Name</string>
+    <string name="device_details">Device Details:</string>
+    <string name="device_id">Device ID</string>
+    <string name="device_type">Device Type</string>
+    <string name="operating_system">Operating System</string>
+    <string name="os_version">OS Version</string>
+    <string name="host_name">Host Name</string>
+    <string name="device_manufacturer">Device Manufacturer</string>
+    <string name="system_manufacturer">System Manufacturer</string>
+    <string name="device_model">Device Model</string>
+    <string name="device_make">Device Make</string>
+    <string name="system_type">System Type</string>
+    <string name="processor">Processor</string>
+    <string name="bios_version">Bios version</string>
+    <string name="ram_size">RAM Size</string>
+    <string name="ram_number_of_cores">RAM Number of cores</string>
+    <string name="registration_date">Registration Date</string>
+    <string name="last_ping_date">Last Ping Date</string>
+    <string name="status">Status</string>
+    <string name="enter_device_id">Enter Device ID</string>
+    <string name="enter_device_type">Enter Device Type</string>
+    <string name="enter_os_name">Enter OS Name</string>
+    <string name="enter_os_version">Enter OS Version</string>
+    <string name="enter_host_name">Enter Host Name</string>
+    <string name="enter_device_make">Enter Device Make</string>
+    <string name="enter_device_manufacturer">Enter Device Manufacturer</string>
+    <string name="enter_system_manufacturer">Enter System Manufacturer</string>
+    <string name="enter_device_model">Enter Device Model</string>
+    <string name="enter_system_type">Enter System Type</string>
+    <string name="enter_processor_name">Enter Processor Name</string>
+    <string name="enter_bios_version">Enter Bios Version</string>
+    <string name="ram_size_hint">Enter ram size</string>
+    <string name="enter_ram_cores">Enter ram cores</string>
+    <string name="activate">Activate</string>
+    <string name="select_school">Select School</string>
+    <string name="verify">Verify</string>
+    <string name="enter_otp">Enter OTP</string>
+    <string name="otp_sent_text">We have sent you 6-digit code to verify your email</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="attendance">Attendance</string>
+    <string name="leave">Leave</string>
+    <string name="notification">Notification</string>
+    <!-- Attendance -->
+    <string name="tap_to_punch_in">TAP TO PUNCH IN</string>
+    <string name="tap_to_punch_out">TAP TO PUNCH OUT</string>
+    <string name="welcome">Welcome</string>
+    <string name="punch_in_success">Punch In Successfully</string>
+    <string name="punch_out_success">Punch Out Successfully</string>
+    <!-- Leaves -->
+    <string name="no_leave_found">No Leave Found</string>
+    <string name="text_apply_leave">Click on apply button to apply your leave</string>
+    <string name="apply_leave">Apply Leave</string>
+    <string name="leave_applied_for">Leave Applied For:</string>
+    <string name="leave_history">Leave History</string>
+    <string name="start_date">Start Date</string>
+    <string name="select_date">Select Date</string>
+    <string name="end_date">End Date</string>
+    <string name="type_a_message_for_manager">Type a message for manager</string>
+    <string name="submit">SUBMIT</string>
+    <string name="message">Message</string>
+    <string name="approved">Approved</string>
+    <string name="rejected">Rejected</string>
+    <string name="start_end_date">%1$s - %2$s</string>
+    <string name="one_day">1 day</string>
+    <string name="multiple_days">%d days</string>
+    <!-- Internet -->
+    <string name="please_check_your_internet_connection">Please check your internet connection</string>
+    <string name="check_internet">No network connection</string>
+    <string name="retry">Retry</string>
+    <string name="oops">Oops!</string>
+    <!-- Profile -->
+    <string name="my_profile">My Profile</string>
+    <string name="about">About</string>
+    <string name="long_tools_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard .</string>
+    <string name="educational_details">Educational Details</string>
+    <string name="expand">expand</string>
+    <string name="d_o_b">D.O.B: </string>
+    <string name="email">Email:</string>
+    <string name="gender">Gender:</string>
+    <string name="category">Category:</string>
+    <string name="disability">Disability:</string>
+    <string name="permanent_address">Permanent Address:</string>
+    <string name="reporting_manager">Reporting Manager</string>
+    <string name="profile_photo">Profile photo</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="nationality">Nationality:</string>
+    <string name="fetching">Fetching…</string>
+    <string name="location_not_found">No Location Found</string>
+    <string name="time_placeholder">__ : __</string>
+    <string name="location_perm_required_msg">You need to accept location permission to mark your attendance.</string>
+    <string name="camera_perm_required_msg">You need to accept camera and files related permission to upload
+        profile picture.</string>
+    <string name="user_full_name">%1$s %2$s</string>
+    <string name="manager_full_name">%1$s %2$s</string>
+    <string name="location_not_matched">Location not matched</string>
+    <string name="text_location_not_matched">You are not on your location. You have to be on location.</string>
+    <string name="attendance_marked">Attendance Marked</string>
+    <string name="no_leave_history">No Leave History</string>
+    <string name="today_is_your_holiday">Today is your %1$s holiday</string>
+    <string name="holiday_status">\"It\'s your holiday today, you can\'t punchin.\"</string>
+    <string name="enter_contact">Contact number\n</string>
+    <string name="personal_details">Personal Details</string>
+    <string name="leave_applied_successfully">Leave applied successfully</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="manager_not_assigned">You are not aligned with Manager. Please Contact to Admin</string>
+    <string name="end_date_check">End date should not be earlier than start date</string>
+    <string name="home">Home</string>
+    <string name="biometric_prompt_title">Biometric Login</string>
+    <string name="biometric_prompt_subtitle">Log in using your biometric credential</string>
+    <string name="biometric_prompt_description">Use your fingerprint or face recognition to log in</string>
+    <string name="biometric_prompt_negative_button">Cancel</string>
+    <string-array name="priority_levels">
+        <item>High</item>
+        <item>Medium</item>
+        <item>Low</item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="edit_task_title">Edit Task</string>
+
 </resources>
