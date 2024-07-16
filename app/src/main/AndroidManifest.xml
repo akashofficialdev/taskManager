@@ -16,19 +16,19 @@
         android:theme="@style/Theme.TaskManager"
         tools:targetApi="31">
         <activity
-            android:name=".features.ui.LocationActivity"
+            android:name=".ui.activity.LocationActivity"
             android:exported="false" />
         <activity
-            android:name=".features.ui.TaskDetailActivity"
+            android:name=".ui.activity.TaskDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".features.ui.CreateTaskActivity"
+            android:name=".ui.activity.CreateTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".features.ui.NavigationActivity"
+            android:name=".ui.activity.NavigationActivity"
             android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

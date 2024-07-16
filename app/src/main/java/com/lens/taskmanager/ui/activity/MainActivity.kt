@@ -1,20 +1,31 @@
-package com.lens.taskmanager
+package com.lens.taskmanager.ui.activity
 
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.widget.Button
+import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import com.lens.taskmanager.features.ui.NavigationActivity
+import com.lens.taskmanager.R
+import com.lens.taskmanager.databinding.ActivityMainBinding
+import com.lens.taskmanager.viewmodel.TaskViewModel
+import com.lens.taskmanager.base.BaseActivity
 import com.lens.taskmanager.helper.BiometricHelper
+import com.lens.taskmanager.helper.LanguageManager
+import com.lens.taskmanager.utils.CommonUtils.setLocale
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<TaskViewModel, ActivityMainBinding>() {
+    override val mViewModel: TaskViewModel by viewModel()
+
+    override fun getViewBinding(): ActivityMainBinding = ActivityMainBinding.inflate(layoutInflater)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -25,15 +36,17 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
+        val savedLanguage = LanguageManager.getLanguage(this)
+        Log.e("TAG", "onCreate: $savedLanguage")
+        setLocale(savedLanguage, this)
+
         Handler(Looper.getMainLooper()).post {
             val biometricHelper = BiometricHelper(this)
             biometricHelper.authenticate(this, {
-                // Success callback
-                // Navigate to the main part of your app
+                val progressBar = this.findViewById<ProgressBar>(R.id.progress_bar)
+                progressBar.isVisible = true
                 startActivity(Intent(this, NavigationActivity::class.java))
             }, {
-                // Failure callback
-                // Handle authentication failure
                 showAuthenticationError()
             })
         }
@@ -58,5 +71,8 @@ class MainActivity : AppCompatActivity() {
         btnRetry.setOnClickListener {
             showAuthentication()
         }
+    }
+
+    override fun initUI() {
     }
 }

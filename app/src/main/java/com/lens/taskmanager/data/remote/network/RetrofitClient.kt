@@ -17,9 +17,6 @@ class RetrofitClient(
     private val scope: CoroutineScope = CoroutineScope(Dispatchers.IO)
     private var baseUrl = "taskmanager.com/api/v1"
 
-    var api: PeopleAppApis = buildPeopleAppApi()
-        get() = buildPeopleAppApi()
-        private set
 
     val isApiClientReady
         get() = baseUrl.isNotBlank()
@@ -28,10 +25,6 @@ class RetrofitClient(
         .baseUrl(baseUrl)
         .addConverterFactory(factory)
         .client(client)
-
-    private fun buildPeopleAppApi() = getBuilder()
-        .build()
-        .create(PeopleAppApis::class.java)
 
     // FOR TESTING
     fun showBaseUrl() {

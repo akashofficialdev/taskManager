@@ -1,7 +1,7 @@
 package com.lens.taskmanager.di
 
-import com.lens.taskmanager.features.TaskRepository
-import com.lens.taskmanager.features.TaskViewModel
+import com.lens.taskmanager.repository.TaskRepository
+import com.lens.taskmanager.viewmodel.TaskViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module

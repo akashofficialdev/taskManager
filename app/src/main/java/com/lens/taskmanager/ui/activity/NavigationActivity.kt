@@ -1,14 +1,21 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.activity
 
 import android.os.Bundle
 import com.lens.taskmanager.R
 import androidx.fragment.app.Fragment
 import com.lens.taskmanager.databinding.ActivityNavigationBinding
-import com.lens.taskmanager.features.TaskViewModel
-import com.lens.taskmanager.features.base.BaseActivity
+import com.lens.taskmanager.viewmodel.TaskViewModel
+import com.lens.taskmanager.base.BaseActivity
+import com.lens.taskmanager.ui.fragment.SettingFragment
+import com.lens.taskmanager.helper.LanguageChangeListener
+import com.lens.taskmanager.helper.LanguageManager
+import com.lens.taskmanager.ui.fragment.DashboardFragment
+import com.lens.taskmanager.ui.fragment.HomeFragment
+import com.lens.taskmanager.utils.CommonUtils.setLocale
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class NavigationActivity :  BaseActivity<TaskViewModel, ActivityNavigationBinding>() {
+class NavigationActivity :  BaseActivity<TaskViewModel, ActivityNavigationBinding>(),
+    LanguageChangeListener {
 
     override val mViewModel: TaskViewModel by viewModel()
 
@@ -16,8 +23,15 @@ class NavigationActivity :  BaseActivity<TaskViewModel, ActivityNavigationBindin
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
+        applySavedLanguage()
 
     }
+
+    private fun applySavedLanguage() {
+        val savedLanguage = LanguageManager.getLanguage(this)
+        setLocale(savedLanguage,this)
+    }
+
     override fun initUI() {
         loadFragment(HomeFragment())
         mViewBinding.bottomNav.itemIconTintList = null
@@ -48,5 +62,8 @@ class NavigationActivity :  BaseActivity<TaskViewModel, ActivityNavigationBindin
         transaction.commit()
     }
 
+    override fun onLanguageChanged(language: String) {
+        setLocale(language,this)
+    }
 
 }

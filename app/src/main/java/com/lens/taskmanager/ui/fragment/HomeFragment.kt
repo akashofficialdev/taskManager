@@ -1,23 +1,19 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.fragment
 
 import android.app.Activity
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
-import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lens.taskmanager.data.local.room.TaskEntity
 import com.lens.taskmanager.databinding.FragmentHomeBinding
-import com.lens.taskmanager.features.TaskAdapter
-import com.lens.taskmanager.features.TaskViewModel
-import com.lens.taskmanager.features.base.BaseFragment
-import com.lens.taskmanager.helper.BiometricHelper
+import com.lens.taskmanager.ui.adapter.TaskAdapter
+import com.lens.taskmanager.viewmodel.TaskViewModel
+import com.lens.taskmanager.base.BaseFragment
+import com.lens.taskmanager.ui.activity.TaskDetailActivity
+import com.lens.taskmanager.ui.activity.CreateTaskActivity
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -60,7 +56,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, TaskViewModel>() {
 
         taskAdapter.setOnEditClickListener(object : TaskAdapter.OnEditClickListener {
             override fun onEditClick(task: TaskEntity) {
-                // Handle edit click
                 val intent = Intent(requireContext(), CreateTaskActivity::class.java)
                 intent.putExtra("task_entity", task)
                 addTaskContract.launch(intent)

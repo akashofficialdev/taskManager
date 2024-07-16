@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.ui.CreateTaskActivity">
+    tools:context=".ui.activity.CreateTaskActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/euclid_medium"
-                android:text="Add Task"
+                android:text="@string/add_task"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -64,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/euclid_regular"
-            android:text="Title"
+            android:text="@string/title"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -84,7 +84,7 @@
                 android:fontFamily="@font/euclid_regular"
                 android:gravity="top|start"
                 android:imeOptions="actionDone"
-                android:hint="Task Title"
+                android:hint="@string/task_title"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
                 android:maxLength="200"
@@ -102,7 +102,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="Description"
+            android:text="@string/description"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -122,7 +122,7 @@
                 android:fontFamily="@font/euclid_regular"
                 android:gravity="top|start"
                 android:imeOptions="actionDone"
-                android:hint="Add a description"
+                android:hint="@string/add_a_description"
                 android:importantForAutofill="no"
                 android:inputType="textMultiLine"
                 android:maxLength="200"
@@ -140,7 +140,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="Due Date"
+            android:text="@string/due_date"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -173,7 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="Priority"
+            android:text="@string/priority"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -190,7 +190,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="Location Reminder"
+            android:text="@string/location_reminder"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -212,14 +212,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             app:cornerRadius="6dp"
-            android:text="Select Location" />
+            android:text="@string/select_location" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="SAVE"
+            android:text="@string/save"
             app:cornerRadius="6dp" />
     </LinearLayout>
 

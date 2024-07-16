@@ -1,4 +1,4 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.activity
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -15,8 +15,8 @@ import androidx.core.view.isVisible
 import com.lens.taskmanager.R
 import com.lens.taskmanager.data.local.room.TaskEntity
 import com.lens.taskmanager.databinding.ActivityCreateTaskBinding
-import com.lens.taskmanager.features.TaskViewModel
-import com.lens.taskmanager.features.base.BaseActivity
+import com.lens.taskmanager.viewmodel.TaskViewModel
+import com.lens.taskmanager.base.BaseActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -36,6 +36,7 @@ class CreateTaskActivity : BaseActivity<TaskViewModel, ActivityCreateTaskBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
+        mViewBinding.btnBack.setOnClickListener { finish() }
 
     }
 

@@ -1,4 +1,4 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.activity
 
 import android.app.Activity
 import android.content.Intent

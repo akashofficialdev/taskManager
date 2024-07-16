@@ -1,10 +1,9 @@
-package com.lens.taskmanager.features
+package com.lens.taskmanager.ui.adapter
 
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -39,14 +38,14 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.ViewHolder>() {
     private var onItemClickListener: OnItemClickListener? = null
     private var onCheckClickListener: OnCheckClickListener? = null
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskAdapter.ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         binding = ItemCreatedTaskBinding.inflate(inflater, parent, false)
         context = parent.context
         return ViewHolder()
     }
 
-    override fun onBindViewHolder(holder: TaskAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
         holder.setIsRecyclable(false)
     }

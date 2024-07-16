@@ -1,4 +1,4 @@
-package com.lens.taskmanager.features.base
+package com.lens.taskmanager.base
 
 import android.content.Context
 import android.os.Bundle

@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".features.ui.TaskDetailActivity">
+    tools:context=".ui.activity.TaskDetailActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/euclid_medium"
-                android:text="Task Details"
+                android:text="@string/task_details"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -69,7 +69,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="Task Title"
+            tools:text="Task Title"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -82,7 +82,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Task Description"
+            tools:text="Task Description"
             android:textAppearance="?attr/textAppearanceBody1"
             android:textSize="18sp"
             android:fontFamily="@font/euclid_regular"
@@ -105,7 +105,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:fontFamily="@font/euclid_regular"
-                android:text="Due Date: "
+                android:text="@string/due_date_colon"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -126,7 +126,7 @@
             android:background="@drawable/priority_high"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
-            android:text="High"
+            tools:text="High"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -150,7 +150,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:layout_weight="1"
-                android:text="Edit"
+                android:text="@string/edit"
                 app:cornerRadius="6dp" />
 
             <!-- Delete Button -->
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
                 android:layout_weight="1"
-                android:text="Delete"
+                android:text="@string/delete"
                 app:cornerRadius="6dp" />
         </LinearLayout>
 
@@ -169,7 +169,7 @@
             android:id="@+id/switchCompleted"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Completed: "
+            android:text="@string/completed"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/taskTitle" />

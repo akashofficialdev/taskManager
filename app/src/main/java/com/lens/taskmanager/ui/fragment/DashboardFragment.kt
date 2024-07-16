@@ -1,10 +1,12 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.fragment
 
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.mikephil.charting.data.BarData
 import com.github.mikephil.charting.data.BarDataSet
 import com.github.mikephil.charting.data.BarEntry
@@ -12,17 +14,21 @@ import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.formatter.ValueFormatter
-import com.github.mikephil.charting.utils.ColorTemplate
 import com.lens.taskmanager.R
+import com.lens.taskmanager.base.BaseFragment
 import com.lens.taskmanager.data.local.room.TaskEntity
 import com.lens.taskmanager.databinding.FragmentDashboardBinding
-import com.lens.taskmanager.features.TaskViewModel
-import com.lens.taskmanager.features.base.BaseFragment
+import com.lens.taskmanager.ui.adapter.UpcomingTaskAdapter
+import com.lens.taskmanager.viewmodel.TaskViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
 
 class DashboardFragment : BaseFragment<FragmentDashboardBinding, TaskViewModel>() {
 
     override val mViewModel: TaskViewModel by viewModel()
+    private lateinit var adapter: UpcomingTaskAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,21 +40,48 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, TaskViewModel>(
     }
 
     override fun setUpObserver() {
-        // Observe task list changes
+        adapter = UpcomingTaskAdapter()
+        binding.rvTask.adapter = adapter
+        binding.rvTask.layoutManager = LinearLayoutManager(requireContext())
         mViewModel.taskList.observe(viewLifecycleOwner, Observer { tasks ->
-            // Update UI based on task list changes
+            mViewModel.fetchTaskSuggestion(tasks) { suggestion ->
+                // Display the suggestion in a TextView or Dialog
+                binding.progress.isVisible = false
+                binding.taskSuggestion.text = suggestion
+            }
+
+            val upcomingTasks = tasks.filter { task ->
+                isTaskDue(task.dueDate)
+            }
+            adapter.submitList(upcomingTasks)
             updateCharts(tasks)
         })
+
+
+
+    }
+
+    private fun isTaskDue(dueDateString: String): Boolean {
+        val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val currentDate = Calendar.getInstance().time
+
+        try {
+            val dueDate = dateFormat.parse(dueDateString)
+            return dueDate != null && currentDate.before(dueDate)
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+        return false
     }
 
     private fun setupCharts() {
         binding.apply {
             // Setup pie chart
-            pieChart.description.isEnabled = false // Disable description
-            pieChart.setUsePercentValues(true) // Use percentage values
+            pieChart.description.isEnabled = false
+            pieChart.setUsePercentValues(true)
 
             // Setup bar chart
-            barChart.description.isEnabled = false // Disable description
+            barChart.description.isEnabled = false
         }
 
         val customColors = listOf(
@@ -69,25 +102,21 @@ class DashboardFragment : BaseFragment<FragmentDashboardBinding, TaskViewModel>(
         pieDataSet.colors = customColors // Set custom colors
         val pieData = PieData(pieDataSet)
 
-        // Apply data to chart
         binding.pieChart.data = pieData
-        binding.pieChart.invalidate() // Refresh chart
+        binding.pieChart.invalidate()
 
-        // Setup bar chart
-        binding.barChart.description.isEnabled = false // Disable description
+        binding.barChart.description.isEnabled = false
 
-        // Define your custom colors for bar chart
+
         val customBarColors = listOf(
-            Color.rgb(102, 255, 178), // Green
-            Color.rgb(255, 153, 153)  // Light Red
-            // Add more colors as needed
+            Color.rgb(102, 255, 178),
+            Color.rgb(255, 153, 153)
         )
 
-        // Setup data entries and dataset for bar chart
+
         val barEntries = listOf(
-            BarEntry(0f, 25f,"Completed"), // Completed tasks
-            BarEntry(1f, 15f,"Pending")  // Pending tasks
-            // Adjust values as per your data
+            BarEntry(0f, 25f, "Completed"),
+            BarEntry(1f, 15f, "Pending")
         )
         val barDataSet = BarDataSet(barEntries, "Task Completion Status")
         barDataSet.colors = customBarColors // Set custom colors

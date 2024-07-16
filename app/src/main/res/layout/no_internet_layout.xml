@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:fontFamily="@font/euclid_regular"
-            android:text="@string/check_internet"
+            android:text="@string/no_internet"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />

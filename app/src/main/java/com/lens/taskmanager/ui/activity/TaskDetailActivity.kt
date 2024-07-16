@@ -1,4 +1,4 @@
-package com.lens.taskmanager.features.ui
+package com.lens.taskmanager.ui.activity
 
 import android.app.Activity
 import android.content.Intent
@@ -15,8 +15,8 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.lens.taskmanager.R
 import com.lens.taskmanager.data.local.room.TaskEntity
 import com.lens.taskmanager.databinding.ActivityTaskDetailBinding
-import com.lens.taskmanager.features.TaskViewModel
-import com.lens.taskmanager.features.base.BaseActivity
+import com.lens.taskmanager.viewmodel.TaskViewModel
+import com.lens.taskmanager.base.BaseActivity
 import com.lens.taskmanager.utils.Priority
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -43,6 +43,7 @@ class TaskDetailActivity : BaseActivity<TaskViewModel, ActivityTaskDetailBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mViewBinding.root)
+        mViewBinding.btnBack.setOnClickListener { finish() }
 
     }
 
